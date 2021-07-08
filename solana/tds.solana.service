@@ -1,0 +1,35 @@
+[Unit]
+Description=Solana TdS node
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+LimitNOFILE=1024000
+Environment="SOLANA_METRICS_CONFIG='host=https://metrics.solana.com:8086,db=tds,u=tds_writer,p=dry_run'"
+Environment="TRUSTED_VALIDATOR3=7XSY3MrYnK8vq693Rju17bbPkCN3Z7KvvfvJx4kdrsSY"
+Environment="TRUSTED_VALIDATOR4=ta1Uvfb7W5BRPrdGnhP9RmeCGKzBySGM1hTE4rBRy6T"
+ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator \
+--wait-for-supermajority 70430039 \
+--expected-bank-hash G4vJCyJXY1u8An6bdtoPNBdTFDwTtre7vvvKGpSyzL6q \
+--expected-shred-version 18122 \
+--entrypoint entrypoint.testnet.solana.com:8001 \
+--trusted-validator 5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on \
+--trusted-validator ${TRUSTED_VALIDATOR3} \
+--trusted-validator ${TRUSTED_VALIDATOR4} \
+--expected-genesis-hash 4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY \
+--no-untrusted-rpc \
+--limit-ledger-size 50000000 \
+--identity /root/solana/validator-keypair.json \
+--vote-account /root/solana/vote-account-keypair.json \
+--ledger /root/solana/validator-ledger \
+--rpc-port 8899 \
+--log - \
+--no-snapshot-fetch \
+--no-genesis-fetch \
+--accounts-db-caching-enabled
+
+[Install]
+WantedBy=multi-user.target
