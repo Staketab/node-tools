@@ -6,9 +6,6 @@ NORMAL="\033[0m"
 
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/install.sh | bash
 
-echo -e "$YELLOW Components updated.$NORMAL"
-echo "---------------"
-
 echo "TAG=ghcr.io/iron-fish/ironfish:latest" > $HOME/.env
 
 echo -e "$YELLOW ENV for docker-compose created.$NORMAL"
