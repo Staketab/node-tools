@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+    ironfish:
+        image: ${TAG}
+        container_name: ironfish
+        restart: always
+        volumes:
+          - $HOME/.ironfish:/root/.ironfish
+        command: start 
+        networks:
+            - node
+
+    ironfish-miner:
+        image: ${TAG}
+        container_name: ironfish-miner
+        restart: always
+        volumes:
+            - $HOME/.ironfish:/root/.ironfish
+        command: miners:start
+        networks:
+            - node
+
+networks:
+    node:
+      driver: bridge
