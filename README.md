@@ -18,6 +18,7 @@ Script for installing Ironfish node and miner.
 Configuring: 
 ```
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/config.sh | bash
+source $HOME/.profile
 ```
 Download docker-compose config:
 ```
