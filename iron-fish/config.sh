@@ -10,10 +10,10 @@ set -u
 
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/install.sh | bash
 
-echo "TAG=ghcr.io/iron-fish/ironfish:latest
+sudo /bin/bash -c  'echo "TAG=ghcr.io/iron-fish/ironfish:latest
 THREAD='${THREADS}'
 PORT='${PORT}'
-" > $HOME/.env
+" > $HOME/.env'
 
 echo -e "$YELLOW ENV for docker-compose created.$NORMAL"
 echo "---------------"
