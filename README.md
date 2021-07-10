@@ -15,6 +15,9 @@ curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/avalanche/ins
 # ![alt_tag](src/iron.png) IRONFISH INSTALLER NODE/MINER
 Script for installing Ironfish node and miner.  
 
+(Optional) Specify THREADS and PORT in this line if you need `bash -s THREADS PORT`  
+Example `bash -s --threads=4 --port=9033`  
+  
 Configuring: 
 ```
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/config.sh | bash

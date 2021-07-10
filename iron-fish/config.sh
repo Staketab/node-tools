@@ -4,17 +4,15 @@ YELLOW="\033[33m"
 GREEN="\033[32m"
 NORMAL="\033[0m"
 THREADS=$1
-DIR=$2
-PORT=$3
+PORT=$2
 
 set -u
 
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/install.sh | bash
 
 echo "TAG=ghcr.io/iron-fish/ironfish:latest
-THREAD='--threads ${THREADS}'
-DATA='--datadir=~/.${DIR}/'
-PORT='--port=${PORT}'
+THREAD='${THREADS}'
+PORT='${PORT}'
 " > $HOME/.env
 
 echo -e "$YELLOW ENV for docker-compose created.$NORMAL"

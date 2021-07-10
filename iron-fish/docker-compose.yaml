@@ -7,7 +7,7 @@ services:
         restart: always
         volumes:
           - $HOME/.ironfish:/root/.ironfish
-        command: start ${DIR} ${PORT}
+        command: start ${PORT}
         networks:
             - node
 
@@ -17,7 +17,7 @@ services:
         restart: always
         volumes:
             - $HOME/.ironfish:/root/.ironfish
-        command: miners:start ${DIR} ${THREAD} 
+        command: miners:start ${THREAD} 
         networks:
             - node
 
