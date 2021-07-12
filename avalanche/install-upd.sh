@@ -1,15 +1,6 @@
 #!/bin/bash
 
-echo ""
-echo "░██████╗████████╗░█████╗░██╗░░██╗███████╗████████╗░█████╗░██████╗░░░░░█████╗░░█████╗░███╗░░░███╗"
-echo "██╔════╝╚══██╔══╝██╔══██╗██║░██╔╝██╔════╝╚══██╔══╝██╔══██╗██╔══██╗░░░██╔══██╗██╔══██╗████╗░████║"
-echo "╚█████╗░░░░██║░░░███████║█████═╝░█████╗░░░░░██║░░░███████║██████╦╝░░░██║░░╚═╝██║░░██║██╔████╔██║"
-echo "░╚═══██╗░░░██║░░░██╔══██║██╔═██╗░██╔══╝░░░░░██║░░░██╔══██║██╔══██╗░░░██║░░██╗██║░░██║██║╚██╔╝██║"
-echo "██████╔╝░░░██║░░░██║░░██║██║░╚██╗███████╗░░░██║░░░██║░░██║██████╦╝██╗╚█████╔╝╚█████╔╝██║░╚═╝░██║"
-echo "╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝╚═════╝░╚═╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝"
-echo ""
-
-sleep 1
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/logo.sh | bash
 
 set -e
 
@@ -50,20 +41,20 @@ cd \
 && export VERSION="$VERSION" && export TAG="$TAG"
 
 if [ -e /etc/systemd/system/avalanchego.service ]; then
-  echo "$YELLOW --------Service found.--------$NORMAL"
+  echo -e "$YELLOW --------Service found.--------$NORMAL"
   sudo systemctl stop avalanchego
   rm -rf /etc/systemd/system/avalanchego.service
   service
   sudo systemctl enable avalanchego.service
-  echo "---------------"
+  echo "-------------------------------------------------------------------"
   echo -e "$YELLOW --------Avalanche service replaced.--------$NORMAL"
-  echo "---------------"
+  echo "-------------------------------------------------------------------"
 else
   service
   sudo systemctl enable avalanchego.service
-  echo "---------------"
+  echo "-------------------------------------------------------------------"
   echo -e "$YELLOW --------Avalanche service installed.--------$NORMAL"
-  echo "---------------"
+  echo "-------------------------------------------------------------------"
 fi
 }
 
@@ -82,9 +73,9 @@ tar -C $HOME/ava-node -xvf avalanchego-linux-amd64-v$VERSION.tar.gz --strip-comp
 
 sudo systemctl daemon-reload && sudo systemctl restart avalanchego.service
 
-echo "---------------"
+echo "-------------------------------------------------------------------"
 echo -e "$GREEN --------AVALANCHE VERSION v$VERSION INSTALLED--------$NORMAL"
-echo "---------------"
+echo "-------------------------------------------------------------------"
 }
 
 install
