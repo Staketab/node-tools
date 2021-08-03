@@ -19,6 +19,7 @@ echo -e "$YELLOW ENV for docker-compose created.$NORMAL"
 echo "---------------"
 
 echo 'export RUN="docker run --rm --tty --interactive --net=host -v $HOME/.ironfish:/root/.ironfish ghcr.io/iron-fish/ironfish:latest"' >> $HOME/.profile
+source $HOME/.profile
 
 echo -e "$GREEN ALL settings and configs created.$NORMAL"
 echo "---------------"

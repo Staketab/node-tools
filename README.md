@@ -15,13 +15,14 @@ curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/avalanche/ins
 # ![alt_tag](src/iron.png) IRONFISH INSTALLER NODE/MINER
 Script for installing Ironfish node and miner.  
 
-(Optional) Specify THREADS and PORT in this line if you need `bash -s THREADS PORT`  
-Example `bash -s --threads=4 --port=9033`  
+(Optional) Specify THREADS and PORT in this line if you need `./config.sh THREADS PORT`  
+Example `./config.sh --threads=4 --port=9033`  
   
 Configuring: 
 ```
-curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/config.sh | bash
-source $HOME/.profile
+wget https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/config.sh \
+&& chmod +x config.sh \
+&& ./config.sh
 ```
 Download docker-compose config:
 ```
@@ -40,6 +41,7 @@ docker-compose up -d
 `$RUN status -f` - node status  
 `$RUN accounts:balance` - account balance  
 `$RUN peers:list -f` - list of all connected peers  
+`$RUN reset` - deletes your chain and wallet state, but preserves your accounts  
 
 All CLI commands - [Ironfish CLI](https://ironfish.network/docs/onboarding/iron-fish-cli).
 
