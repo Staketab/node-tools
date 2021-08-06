@@ -36,6 +36,7 @@ docker-compose up -d
 `docker-compose logs -f ironfish-miner` - ironfish-miner logs  
 
 ### To run the CLI command use `$RUN` env:  
+`$RUN version` - Ironfish node version  
 `$RUN status -f` - node status  
 `$RUN accounts:balance` - account balance  
 `$RUN peers:list -f` - list of all connected peers  
