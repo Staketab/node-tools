@@ -1,8 +1,14 @@
 #!/bin/bash
 
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/logo.sh | bash
+
 YELLOW="\033[33m"
 GREEN="\033[32m"
 NORMAL="\033[0m"
+
+function line {
+echo "-------------------------------------------------------------------"
+}
 
 function setup {
   nodename "${1}"
@@ -43,6 +49,7 @@ function installation {
 setup "${1}" "${2}" "${3}" "${4}"
 ENV="$HOME/.env"
 if [ -f "$ENV" ]; then
+    line
     echo -e "$YELLOW Found an ironfish ENV for docker-compose. Choose an option:$NORMAL"
     echo -e "$RED 1$NORMAL -$YELLOW Reinstall ironfish config.$NORMAL"
     echo -e "$RED 2$NORMAL -$YELLOW Do nothing.$NORMAL"
@@ -51,19 +58,27 @@ if [ -f "$ENV" ]; then
         rm -rf $ENV
         envFile
     elif [ "$ANSWER" == "2" ]; then
+        line
         echo -e "$YELLOW The option to do nothing is selected. Continue...$NORMAL"
+        line
     fi
 else
     envFile
+    line
     echo -e "$GREEN Ironfish ENV for docker-compose created.$NORMAL"
+    line
 fi
 
 EXP='export RUN="docker run --rm --tty --interactive --net=host -v $HOME/.ironfish:/root/.ironfish ghcr.io/iron-fish/ironfish:latest"'
 if grep -R "$EXP" $HOME/.profile; then
+    line
     echo -e "$GREEN Ironfish ENV found.$NORMAL"
+    line
 else
     profiles
+    line
     echo -e "$GREEN Ironfish ENV installed.$NORMAL"
+    line
 fi
 
 mkdir -p $HOME/.ironfish/keys
@@ -78,11 +93,13 @@ sudo /bin/bash -c  'echo "{
 }
 " > $HOME/.ironfish/config.json'
 
-echo -e "$YELLOW Config created.$NORMAL"
-echo "---------------"
+line
+echo -e "$YELLOW Ironfish Config created.$NORMAL"
+line
 
+line
 echo -e "$GREEN ALL settings and configs created.$NORMAL"
-echo "---------------"
+line
 }
 
 while getopts ":n:g:t:p:" o; do
