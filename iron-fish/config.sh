@@ -35,8 +35,8 @@ function port {
 
 function envFile {
 sudo /bin/bash -c  'echo "TAG=ghcr.io/iron-fish/ironfish:latest
-THREAD='${THREADS}'
-PORT='${PORT}'
+THREAD=\"'${THREADS}'\"
+PORT=\"'${PORT}'\"
 " > $HOME/.env'
 }
 
