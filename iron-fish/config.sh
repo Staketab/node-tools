@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/logo.sh | bash
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/staketab+ironfish.sh | bash
 
 YELLOW="\033[33m"
 GREEN="\033[32m"
@@ -26,7 +26,7 @@ function graffiti {
 }
 
 function threads {
-  THREADS=--threads=${1:-"1"}
+  THREADS=--threads=${1:-"-1"}
 }
 
 function port {
