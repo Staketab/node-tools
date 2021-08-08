@@ -1,7 +1,7 @@
 # IRONFISH
 ## [COMPONENTS SETUP README](https://github.com/Staketab/node-tools/blob/main/components/README.md)
 ----------------
-
+![alt_tag](src/bg.png)
 # ![alt_tag](src/iron.png) (DOCKER-COMPOSE) IRONFISH INSTALLER NODE/MINER
 Script for installing Ironfish node and miner.  
 
