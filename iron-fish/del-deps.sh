@@ -15,11 +15,14 @@ function uninstalling {
 line
 echo -e "$YELLOW Backuping keys.$NORMAL"
 line
-# ACC="$($RUN accounts:which)"
-# mkdir -p $HOME/.ironfish/keys \
-# && $RUN accounts:export ${ACC} $HOME/.ironfish/keys/${ACC}.json
+. $HOME/.profiles
+cd
+ACC="$($RUN accounts:which | grep -vE "yarn|cross|tsc|Done" | cut -f 8)"
+mkdir -p $HOME/.ironfish/keys \
+&& $RUN accounts:export ${ACC} $HOME/.ironfish/keys/${ACC}.json
 sudo systemctl stop ironfish
 sudo systemctl stop ironfish-miner
+sudo docker-compose down
 DATE="$(date +%F-%H-%M-%S)"
 mkdir -p $HOME/ironfish-backup_$DATE/keys $HOME/ironfish-backup_$DATE/accounts \
 && cp -r $HOME/.ironfish/keys/* $HOME/ironfish-backup_$DATE/keys \
