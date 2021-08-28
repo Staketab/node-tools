@@ -98,7 +98,7 @@ function ironfishMiner {
     Restart=always
     RestartSec=3
     LimitNOFILE=50000
-    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start miners:start '${THREADS}'
+    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start:once miners:start '${THREADS}'
     [Install]
     WantedBy=multi-user.target
     " >/etc/systemd/system/ironfish-miner.service'
@@ -115,7 +115,7 @@ function ironfish {
     Restart=always
     RestartSec=3
     LimitNOFILE=50000
-    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start start '${PORT}'
+    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start:once start '${PORT}'
     [Install]
     WantedBy=multi-user.target
     " >/etc/systemd/system/ironfish.service'
