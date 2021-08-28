@@ -42,16 +42,11 @@ function limit {
     ulimit -c 0
 }
 function profiles {
-    echo 'export RUN="yarn --cwd $HOME/ironfish/ironfish-cli/ start"' >> $HOME/.profile
+    echo 'export RUN="yarn --cwd $HOME/ironfish/ironfish-cli/ start:once"' >> $HOME/.profile
     vars
 }
 function components {
     sudo apt update
-    sudo apt install docker.io curl -y
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    sudo curl -L https://github.com/docker/compose/releases/download/1.29.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
     sudo apt-get install build-essential libtool wget python libssl-dev git tmux ufw jq -y
 }
 function nodejs {
@@ -98,7 +93,7 @@ function ironfishMiner {
     Restart=always
     RestartSec=3
     LimitNOFILE=50000
-    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start:once miners:start '${THREADS}'
+    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start miners:start '${THREADS}'
     [Install]
     WantedBy=multi-user.target
     " >/etc/systemd/system/ironfish-miner.service'
@@ -115,7 +110,7 @@ function ironfish {
     Restart=always
     RestartSec=3
     LimitNOFILE=50000
-    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start:once start '${PORT}'
+    ExecStart=/usr/bin/yarn --cwd $HOME/ironfish/ironfish-cli/ start start '${PORT}'
     [Install]
     WantedBy=multi-user.target
     " >/etc/systemd/system/ironfish.service'
@@ -202,9 +197,6 @@ if [ -f "$CONF" ]; then
     fi
 else
     config
-    line
-    echo -e "$GREEN Ironfish config created.$NORMAL"
-    line
 fi
 
 MINER="/etc/systemd/system/ironfish-miner.service"
