@@ -107,6 +107,7 @@ function setup {
     echo "Where would you like your Go Workspace folder to be? (example: /home/username or /root)"
     read -p "Path: " GO_WS_PATH
     cd $GO_WS_PATH
+    echo "Name of your Go folder? (example: go or custom)"
     read -p "Give the folder a name: " GO_WS_NAME
     GO_PATH=$PWD/$GO_WS_NAME
     echo "Your Go Workspace folder has been set to $GO_PATH"
