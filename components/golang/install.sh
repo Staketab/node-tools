@@ -63,11 +63,6 @@ function install {
     echo "-----------------------------------------"
     echo "              Install Golang             "
     echo "-----------------------------------------"
-    if ! test -d $HOME/Downloads
-    then
-        mkdir -p $HOME/Downloads
-    fi
-    #cd $HOME/Downloads
 
     # 64-bit Linux
     if [ "$OS" == "Linux" ] && [ "$ARCH" == "x86_64" ]
@@ -109,7 +104,7 @@ function setup {
     echo "-----------------------------------------"
     echo "             Set Go Workspace            "
     echo "-----------------------------------------"
-    echo "Where would you like your Go Workspace folder to be? (example: /home)"
+    echo "Where would you like your Go Workspace folder to be? (example: /home/username or /root)"
     read -p "Path: " GO_WS_PATH
     cd $GO_WS_PATH
     read -p "Give the folder a name: " GO_WS_NAME
@@ -123,7 +118,7 @@ function setup {
     sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
     echo "export GOPATH=$GO_PATH" >> ~/.bashrc
     echo "export PATH=$GO_PATH/bin:\$PATH" >> ~/.bashrc
-    echo "export GOBIN=/root/go/bin" >> ~/.bashrc
+    echo "export GOBIN=$GO_PATH/bin" >> ~/.bashrc
     source ~/.bashrc
     echo "Setup done !"
 }
