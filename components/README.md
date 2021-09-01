@@ -45,4 +45,13 @@ Example `bash -s 3.8.5`
 ```
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/python/install.sh | bash -s 3.8.5
 ```
+
+# USERNAME SETUP
+Script for installing new user.  
+```
+wget https://raw.githubusercontent.com/Staketab/node-tools/main/components/user/new.sh \
+&& chmod +x new.sh \
+&& ./new.sh
+```
+
 ### DONE
