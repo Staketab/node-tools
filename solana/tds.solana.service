@@ -27,8 +27,8 @@ ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator 
 --ledger /root/solana/validator-ledger \
 --rpc-port 8899 \
 --log - \
---no-snapshot-fetch \
---no-genesis-fetch \
+#--no-snapshot-fetch \
+#--no-genesis-fetch \
 --accounts-db-caching-enabled
 
 [Install]
