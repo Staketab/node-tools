@@ -25,6 +25,16 @@ Installation script include:
 ```
 curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/install.sh | bash
 ```
+
+# ![alt_tag](src/ubuntu.png) DOCKER + DOCKER-COMPOSE SETUP
+Installation script include:  
+`- Docker`  
+`- Docker-compose`  
+
+```
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/docker/install.sh | bash
+```
+
 # ![alt_tag](src/go.png) GOLANG #GO
 Install custom version of Golang #GO.  
 Specify version in this line `./install.sh -v VERSION`  
