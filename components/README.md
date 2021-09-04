@@ -58,10 +58,12 @@ curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/py
 
 # USERNAME SETUP
 Script for installing new user.  
+Specify USERNAME in this line `./new.sh -u USERNAME`  
+Example `./new.sh -u staketab` 
 ```
 wget https://raw.githubusercontent.com/Staketab/node-tools/main/components/user/new.sh \
 && chmod +x new.sh \
-&& ./new.sh
+&& ./new.sh -u USERNAME
 ```
 
 ### DONE
