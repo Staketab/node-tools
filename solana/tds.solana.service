@@ -9,27 +9,36 @@ Restart=always
 RestartSec=1
 LimitNOFILE=1024000
 Environment="SOLANA_METRICS_CONFIG='host=https://metrics.solana.com:8086,db=tds,u=tds_writer,p=dry_run'"
-Environment="TRUSTED_VALIDATOR3=7XSY3MrYnK8vq693Rju17bbPkCN3Z7KvvfvJx4kdrsSY"
-Environment="TRUSTED_VALIDATOR4=ta1Uvfb7W5BRPrdGnhP9RmeCGKzBySGM1hTE4rBRy6T"
+Environment="KNOWN_VALIDATOR1=3K8BYGTPD9AxqYQDPdU8PPy6AfiSwf4hDmFy1xXGB8Ns"
+Environment="KNOWN_VALIDATOR2=5dB4Ygb8Sf3Sssdxxrpbb4NFX9bMrYnieiz11Vr5xJkJ"
+Environment="KNOWN_VALIDATOR3=7TcmJn12spW6KQJp4fvvo45d1hpxS8EnLjKMxihtNZ1V"
+Environment="KNOWN_VALIDATOR4=4jhyvbBHbsRDF6och7pDQ7ahYTUr7wNkAYJTLLuMUtku"
+Environment="BANK_HASH=E3MJucWkWkugqJ8ewHAkDWuCN6uDxEychwjFFCwJ16ic"
+Environment="GENESIS_HASH=4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY"
+Environment="ENTRYPOINT=entrypoint.testnet.solana.com:8001"
+Environment="SHRED=50850"
+Environment="SUPERMAJORITY=95038710"
 ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator \
---wait-for-supermajority 70430039 \
---expected-bank-hash G4vJCyJXY1u8An6bdtoPNBdTFDwTtre7vvvKGpSyzL6q \
---expected-shred-version 18122 \
---entrypoint entrypoint.testnet.solana.com:8001 \
---trusted-validator 5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on \
---trusted-validator ${TRUSTED_VALIDATOR3} \
---trusted-validator ${TRUSTED_VALIDATOR4} \
---expected-genesis-hash 4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY \
+--wait-for-supermajority ${SUPERMAJORITY} \
+--expected-bank-hash ${BANK_HASH} \
+--expected-shred-version ${SHRED} \
+--entrypoint ${ENTRYPOINT} \
+--expected-genesis-hash ${GENESIS_HASH} \
+--known-validator ${KNOWN_VALIDATOR1} \
+--known-validator ${KNOWN_VALIDATOR2} \
+--known-validator ${KNOWN_VALIDATOR3} \
+--known-validator ${KNOWN_VALIDATOR4} \
 --no-untrusted-rpc \
 --limit-ledger-size 50000000 \
 --identity /root/solana/validator-keypair.json \
 --vote-account /root/solana/vote-account-keypair.json \
 --ledger /root/solana/validator-ledger \
 --rpc-port 8899 \
+--rpc-bind-address 127.0.0.1 \
 --log - \
-#--no-snapshot-fetch \
-#--no-genesis-fetch \
---accounts-db-caching-enabled
+--accounts-db-caching-enabled \
+--no-snapshot-fetch \
+--no-genesis-fetch
 
 [Install]
 WantedBy=multi-user.target
