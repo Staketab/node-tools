@@ -34,7 +34,6 @@ ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator 
 --vote-account /root/solana/vote-account-keypair.json \
 --ledger /root/solana/validator-ledger \
 --rpc-port 8899 \
---rpc-bind-address 127.0.0.1 \
 --log - \
 --accounts-db-caching-enabled \
 --no-snapshot-fetch \
