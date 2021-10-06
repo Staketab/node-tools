@@ -54,7 +54,7 @@ function rpcauthjs {
     rm -rf $HOME/bitcoin-rpcauth-js/
 }
 function btcService {
-sudo /bin/bash -c  'echo "[Unit]
+sudo /bin/bash -c 'echo "[Unit]
 Description=BTC Testnet node
 After=network-online.target
 [Service]
@@ -71,7 +71,7 @@ sudo systemctl daemon-reload && sudo systemctl enable btc.service
 }
 function btcConfig {
 mkdir -p $HOME/.bitcoin/
-sudo /bin/bash -c  'echo "[chain]
+sudo /bin/bash -c 'echo "[chain]
 chain=test
 
 [core]
@@ -133,8 +133,19 @@ YARNDEP=$(which yarn)
 BTCCORE=$(which bitcoind)
     if [ -f "$BTCCORE" ]; then
         line
-        echo -e "$YELLOW File BITCOIN CORE exist. No need to install.$NORMAL"
+        echo -e "$YELLOW File BITCOIN CORE exist. Choose an option:$NORMAL"
+        echo -e "$RED 1$NORMAL -$YELLOW Reinstall BITCOIN CORE.$NORMAL"
+        echo -e "$RED 2$NORMAL -$YELLOW Do nothing.$NORMAL"
         line
+        read -p "Your answer: " ANSWER1
+        if [ "$ANSWER1" == "1" ]; then
+            rm -rf $BTCCORE
+            bitcoinCore
+        elif [ "$ANSWER1" == "2" ]; then
+            line
+            echo -e "$YELLOW The option to do nothing is selected. Continue...$NORMAL"
+            line
+        fi
     else
         bitcoinCore
         line
