@@ -130,7 +130,8 @@ YARNDEP=$(which yarn)
         echo -e "$GREEN YARN installed.$NORMAL"
         line
     fi
-BTCCORE=$(which bitcoind)
+BTCCORE="$HOME/bitcoin/bin/bitcoind"
+BTCCOREF="$HOME/bitcoin/"
     if [ -f "$BTCCORE" ]; then
         line
         echo -e "$YELLOW File BITCOIN CORE exist. Choose an option:$NORMAL"
@@ -139,7 +140,7 @@ BTCCORE=$(which bitcoind)
         line
         read -p "Your answer: " ANSWER1
         if [ "$ANSWER1" == "1" ]; then
-            rm -rf $BTCCORE
+            rm -rf $BTCCOREF
             bitcoinCore
         elif [ "$ANSWER1" == "2" ]; then
             line
