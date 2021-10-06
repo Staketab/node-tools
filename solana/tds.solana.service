@@ -8,26 +8,36 @@ Type=simple
 Restart=always
 RestartSec=1
 LimitNOFILE=1024000
+
 Environment="SOLANA_METRICS_CONFIG='host=https://metrics.solana.com:8086,db=tds,u=tds_writer,p=dry_run'"
-Environment="KNOWN_VALIDATOR1=3K8BYGTPD9AxqYQDPdU8PPy6AfiSwf4hDmFy1xXGB8Ns"
-Environment="KNOWN_VALIDATOR2=5dB4Ygb8Sf3Sssdxxrpbb4NFX9bMrYnieiz11Vr5xJkJ"
-Environment="KNOWN_VALIDATOR3=7TcmJn12spW6KQJp4fvvo45d1hpxS8EnLjKMxihtNZ1V"
-Environment="KNOWN_VALIDATOR4=4jhyvbBHbsRDF6och7pDQ7ahYTUr7wNkAYJTLLuMUtku"
-Environment="BANK_HASH=E3MJucWkWkugqJ8ewHAkDWuCN6uDxEychwjFFCwJ16ic"
+Environment="KNOWN_VALIDATOR1=eoKpUABi59aT4rR9HGS3LcMecfut9x7zJyodWWP43YQ"
+Environment="KNOWN_VALIDATOR2=F1TuusSghAobmbGAgNrdxRS9nBjwT6J1yyALUvpEA1is"
+Environment="KNOWN_VALIDATOR3=9YVpEeZf8uBoUtzCFC6SSFDDqPt16uKFubNhLvGxeUDy"
+Environment="KNOWN_VALIDATOR4=GmgV3mnVohRz99rsnMNWNFqzop4oSgNv6Hx1kE7PKvYU"
+Environment="KNOWN_VALIDATOR5=GcibmF4zgb6Vr4bpZZYHGDPZNWiLnBDUHdpJZTsTDvwe"
+Environment="BANK_HASH=5GSuuhkJfRqZK9LQdvFY7bramdNiQgTEFJp8w7DtZVUN"
 Environment="GENESIS_HASH=4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY"
 Environment="ENTRYPOINT=entrypoint.testnet.solana.com:8001"
-Environment="SHRED=50850"
-Environment="SUPERMAJORITY=95038710"
+Environment="ENTRYPOINT1=5.9.35.85:8000"
+Environment="ENTRYPOINT2=94.198.53.85:8000"
+Environment="ENTRYPOINT3=178.170.42.36:8000"
+Environment="SHRED=37137"
+Environment="SUPERMAJORITY=96965687"
+
 ExecStart=/root/.local/share/solana/install/active_release/bin/solana-validator \
 --wait-for-supermajority ${SUPERMAJORITY} \
 --expected-bank-hash ${BANK_HASH} \
 --expected-shred-version ${SHRED} \
 --entrypoint ${ENTRYPOINT} \
+--entrypoint ${ENTRYPOINT1} \
+--entrypoint ${ENTRYPOINT2} \
+--entrypoint ${ENTRYPOINT3} \
 --expected-genesis-hash ${GENESIS_HASH} \
 --known-validator ${KNOWN_VALIDATOR1} \
 --known-validator ${KNOWN_VALIDATOR2} \
 --known-validator ${KNOWN_VALIDATOR3} \
 --known-validator ${KNOWN_VALIDATOR4} \
+--known-validator ${KNOWN_VALIDATOR5} \
 --no-untrusted-rpc \
 --limit-ledger-size 50000000 \
 --identity /root/solana/validator-keypair.json \
