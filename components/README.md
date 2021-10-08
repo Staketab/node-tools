@@ -32,7 +32,7 @@ Installation script include:
 `- Docker-compose`  
 
 ```
-curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/docker/install.sh | bash
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/components/docker/install.sh | bash
 ```
 
 # ![alt_tag](src/go.png) GOLANG #GO
