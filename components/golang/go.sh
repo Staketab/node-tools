@@ -44,7 +44,7 @@ function goInstall {
     PACK=go${VERSION}.linux-amd64.tar.gz
     PACK_PATH="$HOME/tmp"
     LINK="https://golang.org/dl/${PACK}"
-    echo -e "$YELLOW :: Downloading file with Genesis...$NORMAL"
+    echo -e "$YELLOW :: Downloading GO archive...$NORMAL"
     wget -P $PACK_PATH $LINK --quiet --show-progress
     sudo tar -C /usr/local -xzf ${PACK_PATH}/${PACK}
     rm -rf $HOME/tmp
@@ -56,10 +56,10 @@ function goInstall {
 
 function env {
     mkdir -p ${GO_PATH}{,/bin,/pkg,/src}
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
-    echo "export GOPATH=$GO_PATH" >> ~/.profile
-    echo "export PATH=$GO_PATH/bin:\$PATH" >> ~/.profile
-    echo "export GOBIN=$GO_PATH/bin" >> ~/.profile
+    sudo /bin/bash -c  'echo "export PATH=$PATH:/usr/local/go/bin" > /etc/profile'
+    sudo /bin/bash -c  'echo "export GOPATH=$GO_PATH" > $HOME/.profile'
+    sudo /bin/bash -c  'echo "export PATH=$GO_PATH/bin:\$PATH" > $HOME/.profile'
+    sudo /bin/bash -c  'echo "export GOBIN=$GO_PATH/bin" > $HOME/.profile'
     . /etc/profile
     . $HOME/.profile
     line
