@@ -55,8 +55,8 @@ function goInstall {
 }
 
 function env {
-    mkdir -p ${GO_PATH}{,/bin,/pkg,/src}
-    sudo /bin/bash -c  'echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile'
+    mkdir -p ${GOPATH}{,/bin,/pkg,/src}
+    sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
     sudo /bin/bash -c  'echo "export GOPATH='$GO_PATH'" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export PATH='$GO_PATH'/bin:\$PATH" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export GOBIN='$GO_PATH'/bin" >> $HOME/.profile'
