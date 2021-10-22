@@ -55,13 +55,14 @@ function goInstall {
 }
 
 function env {
-    mkdir -p ${GOPATH}{,/bin,/pkg,/src}
     sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
     sudo /bin/bash -c  'echo "export GOPATH='$GO_PATH'" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export PATH='$GO_PATH'/bin:\$PATH" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export GOBIN='$GO_PATH'/bin" >> $HOME/.profile'
     . /etc/profile
     . $HOME/.profile
+    export GOPATH=$GO_PATH
+    mkdir -p ${GOPATH}{,/bin,/pkg,/src}
     line
     echo -e "$GREEN Env instaled... $NORMAL"
     line
