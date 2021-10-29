@@ -60,6 +60,8 @@ function env {
     sudo /bin/bash -c  'echo "export GOPATH='$GO_PATH'" >> $HOME/.bashrc'
     sudo /bin/bash -c  'echo "export PATH='$GO_PATH'/bin:\$PATH" >> $HOME/.bashrc'
     sudo /bin/bash -c  'echo "export GOBIN='$GO_PATH'/bin" >> $HOME/.bashrc'
+    sudo /bin/bash -c  'echo "export GOROOT=/usr/local/go" >> $HOME/.bashrc'
+    sudo /bin/bash -c  'echo "export GO111MODULE=on" >> $HOME/.bashrc'
     . /etc/profile
     . $HOME/.bashrc
     export GOPATH=$GO_PATH
