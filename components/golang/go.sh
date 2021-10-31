@@ -85,7 +85,8 @@ if [ -f "$GO" ]; then
     line
     read -p "Your answer: " ANSWER
     if [ "$ANSWER" == "1" ]; then
-        rm -rf $GO $GOFMT
+        rm -rf /usr/local/go
+        mkdir -p /usr/local/go
         goInstall
         env
         GOVERSION="$($(which go) version)"
