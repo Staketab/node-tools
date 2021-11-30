@@ -83,13 +83,9 @@ fi
 
 mkdir -p $HOME/.ironfish/keys
 sudo /bin/bash -c  'echo "{
-    \"bootstrapNodes\": [
-        \"test.bn1.ironfish.network\"
-    ],
     \"blockGraffiti\": \"'${GRAFFITI}'\",
     \"nodeName\": \"'${NODENAME}'\",
-    \"enableSyncing\": \"true\",
-    \"enableTelemetry\": \"true\"
+    \"enableSyncing\": \"true\"
 }
 " > $HOME/.ironfish/config.json'
 
