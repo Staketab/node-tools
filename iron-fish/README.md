@@ -51,8 +51,11 @@ Configuring:
 ```
 wget https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/ironfish.sh \
 && chmod +x ironfish.sh \
-&& ./ironfish.sh -n NODENAME -g GRAFFITI -t THREADS -p PORT \
-&& rm -rf ironfish.sh
+&& ./ironfish.sh -n NODENAME -g GRAFFITI -t THREADS -p PORT
+```
+Than:  
+```
+rm -rf ironfish.sh && . $HOME/.profile
 ```
 ### Commands:  
 `sudo systemctl stop ironfish` - stop ironfish node  
@@ -72,7 +75,7 @@ wget https://raw.githubusercontent.com/Staketab/node-tools/main/iron-fish/ironfi
 `$RUN accounts:export $KEY_NAME $HOME/.ironfish/keys/$KEY_NAME.json` - export account to the file(backup)  
 `$RUN accounts:import $HOME/.ironfish/keys/KEY_NAME.json` - import account from file  
 
-All CLI commands - [Ironfish CLI](https://ironfish.network/docs/onboarding/iron-fish-cli).  
+All CLI commands - [Ironfish CLI](https://ironfish.network/docs/onboarding/new-account-iron-fish).  
 
 ## Cleaning the system from Ironfish:  
 ```
