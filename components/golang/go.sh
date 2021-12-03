@@ -13,11 +13,11 @@ function setup {
 }
 
 function version {
-  VERSION=${1:-"1.17.1"}
+  VERSION=${1:-"1.17.2"}
 }
 
 function gopath {
-  GO_PATH=${1:-"/usr/local/go"}
+  GO_PATH=${1:-"$HOME/go"}
 }
 
 function line {
