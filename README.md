@@ -1,5 +1,5 @@
 # Node Tools
-List of tools for Node projects.
+Node tools for various blockchains.
 
 ## [COMPONENTS SETUP README](https://github.com/Staketab/node-tools/blob/main/components/README.md)
 ----------------
