@@ -35,7 +35,7 @@ WorkingDirectory=$HOME
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
-ExecStart=$HOME/ava-node/avalanchego --network='${NETWORK}' --public-ip='${SERVERIP}' --http-host=0.0.0.0 --http-port=9650 --staking-port=9651
+ExecStart=$HOME/ava-node/avalanchego --network-id='${NETWORK}' --public-ip='${SERVERIP}' --http-host=0.0.0.0 --http-port=9650 --staking-port=9651
 [Install]
 WantedBy=multi-user.target
 " >/etc/systemd/system/avalanchego.service'
