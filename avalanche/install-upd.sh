@@ -12,11 +12,11 @@ TAG=$2
 SERVERIP="$(curl ifconfig.me)"
 
 if [ "$VERSION" == "" ]; then
-    VERSION="1.4.7"
+    VERSION="1.7.4"
 fi
 
 if [ "$TAG" == "" ]; then
-    TAG="1.4.7"
+    TAG="1.7.4"
 fi
 
 function service {
@@ -30,7 +30,7 @@ WorkingDirectory=$HOME
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
-ExecStart=$HOME/ava-node/avalanchego --public-ip='${SERVERIP}' --http-host=
+ExecStart=$HOME/ava-node/avalanchego --public-ip='${SERVERIP}' --http-host=0.0.0.0 --http-port=9650 --staking-port=9651
 [Install]
 WantedBy=multi-user.target
 " >/etc/systemd/system/avalanchego.service'
