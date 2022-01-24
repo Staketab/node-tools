@@ -10,19 +10,9 @@ NORMAL="\033[0m"
 VERSION=${1:-"1.7.4"}
 TAG=${2:-"1.7.4"}
 NETWORK=${3:-"mainnet"}
+HOST=${4:-"0.0.0.0"}
+PORT=${5:-"9650"}
 SERVERIP="$(curl ifconfig.me)"
-
-#if [ "$VERSION" == "" ]; then
-#    VERSION="1.7.4"
-#fi
-
-#if [ "$TAG" == "" ]; then
-#    TAG="1.7.4"
-#fi
-
-#if [ "$NETWORK" == "" ]; then
-#    NETWORK="mainnet"
-#fi
 
 function service {
 sudo /bin/bash -c  'echo "[Unit]
@@ -34,8 +24,8 @@ Type=simple
 WorkingDirectory=$HOME
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=4096
-ExecStart=$HOME/ava-node/avalanchego --network-id='${NETWORK}' --public-ip='${SERVERIP}' --http-host=0.0.0.0 --http-port=9650 --staking-port=9651
+LimitNOFILE=65536
+ExecStart=$HOME/ava-node/avalanchego --network-id='${NETWORK}' --public-ip='${SERVERIP}' --http-host='${HOST}' --http-port='${PORT}'
 [Install]
 WantedBy=multi-user.target
 " >/etc/systemd/system/avalanchego.service'
