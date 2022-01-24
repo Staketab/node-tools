@@ -10,7 +10,7 @@ function username {
 
 function install {
 setup "${1}"
-adduser ${USER}
+adduser ${USER} --disabled-password
 usermod -aG sudo ${USER}
 echo "${USER} ALL=(ALL) NOPASSWD: ALL" | sudo EDITOR='tee -a' visudo
 echo "DenyUsers ${USER}" | sudo tee -a /etc/ssh/sshd_config
