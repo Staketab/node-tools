@@ -13,7 +13,7 @@ function setup {
 }
 
 function version {
-  VERSION=${1:-"1.17.2"}
+  VERSION=${1:-"1.18.2"}
 }
 
 function gopath {
