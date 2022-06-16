@@ -1,5 +1,8 @@
 #!/bin/bash
 
+curl -s https://raw.githubusercontent.com/Staketab/node-tools/main/logo.sh | bash
+
+RED="\033[31m"
 YELLOW="\033[33m"
 GREEN="\033[32m"
 NORMAL="\033[0m"
@@ -12,15 +15,26 @@ echo "-------------------------------------------------------------------"
 function setup {
   username "${1}"
   rpcport "${2}"
+  chain "${3}"
 }
-
 function username {
   RPCUSER=${1}
 }
-
 function rpcport {
   RPCPORT=${1:-"8332"}
 }
+function chain {
+  CHAIN=${1}
+  if [ "$CHAIN" == "mainnet" ]; then
+    CHAIN=""
+  elif [ "$CHAIN" == "testnet" ]; then
+    CHAIN="-testnet"
+  else
+    echo -e "$RED Wrong BTC chain. Try again...$NORMAL"
+    exit 0
+  fi
+}
+
 function components {
     sudo apt update
     sudo apt-get install build-essential libtool wget python libssl-dev git tmux ufw jq -y
@@ -59,7 +73,7 @@ Description=BTC Testnet node
 After=network-online.target
 [Service]
 User='${USER}'
-ExecStart=$HOME/bitcoin/bin/bitcoind -testnet -conf=$HOME/.bitcoin/bitcoin.conf
+ExecStart=$HOME/bitcoin/bin/bitcoind '${CHAIN}' -conf=$HOME/.bitcoin/bitcoin.conf
 Restart=always
 RestartSec=3
 LimitNOFILE=4096
@@ -72,7 +86,7 @@ sudo systemctl daemon-reload && sudo systemctl enable btc.service
 function btcConfig {
 mkdir -p $HOME/.bitcoin/
 sudo /bin/bash -c 'echo "[chain]
-chain=test
+chain='${CHAIN}'
 
 [core]
 daemon=1
@@ -156,7 +170,7 @@ BTCCOREF="$HOME/bitcoin/"
 rpcauthjs
 }
 function installation {
-setup "${1}" "${2}"
+setup "${1}" "${2}" "${3}"
 configuration
 CONF="$HOME/.bitcoin/bitcoin.conf"
 if [ -f "$CONF" ]; then
@@ -224,7 +238,7 @@ function req {
     line
     sleep 3
 }
-while getopts ":u:p:" o; do
+while getopts ":u:p:c:" o; do
   case "${o}" in
     u)
       u=${OPTARG}
@@ -232,9 +246,12 @@ while getopts ":u:p:" o; do
     p)
       p=${OPTARG}
       ;;
+    c)
+      c=${OPTARG}
+      ;;
   esac
 done
 shift $((OPTIND-1))
 
-installation "${u}" "${p}"
+installation "${u}" "${p}" "${c}"
 req
