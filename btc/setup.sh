@@ -27,8 +27,10 @@ function chain {
   CHAIN=${1}
   if [ "$CHAIN" == "mainnet" ]; then
     CHAIN=""
+    C_CHAIN="mainnet"
   elif [ "$CHAIN" == "testnet" ]; then
     CHAIN="-testnet"
+    C_CHAIN="testnet"
   else
     echo -e "$RED Wrong BTC chain. Try again...$NORMAL"
     exit 0
@@ -86,7 +88,7 @@ sudo systemctl daemon-reload && sudo systemctl enable btc.service
 function btcConfig {
 mkdir -p $HOME/.bitcoin/
 sudo /bin/bash -c 'echo "[chain]
-chain='${CHAIN}'
+chain='${C_CHAIN}'
 
 [core]
 daemon=1
