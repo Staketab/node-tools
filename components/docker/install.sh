@@ -9,7 +9,7 @@ NORMAL="\033[0m"
 VERSION=$1
 
 if [ "$VERSION" == "" ]; then
-    VERSION="1.29.2"
+    VERSION="2.15.0"
 fi
 
 export VERSION="$VERSION" \
@@ -17,7 +17,7 @@ export VERSION="$VERSION" \
 && sudo apt install docker.io curl -y \
 && sudo systemctl start docker \
 && sudo systemctl enable docker \
-&& sudo curl -L https://github.com/docker/compose/releases/download/$VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+&& sudo curl -L https://github.com/docker/compose/releases/download/v$VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
 && sudo chmod +x /usr/local/bin/docker-compose
 
 echo "-------------------------------------------------------------------"
