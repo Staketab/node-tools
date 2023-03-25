@@ -17,7 +17,7 @@ export VERSION="$VERSION" \
 && sudo apt install docker.io curl -y \
 && sudo systemctl start docker \
 && sudo systemctl enable docker \
-&& sudo curl -L https://github.com/docker/compose/releases/download/v$VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+&& sudo wget -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/v$VERSION/docker-compose-`uname -s`-`uname -m` \
 && sudo chmod +x /usr/local/bin/docker-compose
 
 echo "-------------------------------------------------------------------"
