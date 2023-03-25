@@ -9,7 +9,7 @@ NORMAL="\033[0m"
 VERSION=$1
 
 if [ "$VERSION" == "" ]; then
-    VERSION="2.15.0"
+    VERSION="2.17.0"
 fi
 
 export VERSION="$VERSION" \
