@@ -29,7 +29,7 @@ function components {
     echo -e "$YELLOW Components installing... $NORMAL"
     line
     sudo apt update && sudo apt upgrade -y
-    sudo apt-get install build-essential automake autoconf libtool wget libssl-dev git cmake perl tmux ufw gcc unzip zip jq make -y
+    sudo apt-get install build-essential libpq-dev automake autoconf libtool wget curl libssl-dev git cmake perl tmux ufw gcc unzip zip jq make -y
     sudo apt-get install golang-statik -y
     line
     echo -e "$GREEN Components installed... $NORMAL"
